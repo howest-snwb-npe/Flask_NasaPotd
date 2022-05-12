@@ -11,7 +11,7 @@ def root():
 @app.route("/search",methods=["POST"])
 def search():
     quantity = request.form.get("quantity")
-    url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=5"
+    url = f"https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count={quantity}"
     response = requests.get(url)
     # print(response.json())
     for photo in response.json():
