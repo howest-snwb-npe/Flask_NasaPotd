@@ -13,8 +13,10 @@ def search():
     quantity = request.form.get("quantity")
     url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=5"
     response = requests.get(url)
-    print(response.json())
-
+    # print(response.json())
+    for photo in response.json():
+        print(photo["url"])
+    
     return render_template("search.html",quantity=quantity,response=response.json())
 
 if __name__ == '__main__':

@@ -10,6 +10,9 @@
             <input type="submit">
         </form>
         <h2>U wou {{ quantity }} foto's tonen</h2>
+        {% for photo in response %}
+            <p>{{ photo["url"] }}</p>
+        {% endfor %}
         <p>{{ response }}</p>
     </body>
 </html>
