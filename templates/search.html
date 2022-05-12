@@ -6,12 +6,20 @@
     <body>
         <h1>NASA Picture of the day demo</h1>
         <form action="/search" method="POST">
-            <input type="number" id="quantity" name="quantity" min="1" max="5">
+            <input type="number" id="quantity" name="quantity" min="1" max="5" required>
             <input type="submit">
         </form>
         <h2>U wou {{ quantity }} foto's tonen</h2>
         {% for photo in response %}
-            <p><img src="{{ photo['url'] }}"></p>
+            <h3>{{ photo['title'] }} ({{ photo['date'] }})</h3>
+            <p>
+            {% if photo["media_type"] == "image" %}
+            <img src="{{ photo['url'] }}">
+            {% else %}
+            <a href="{{ photo['url'] }}">
+            {% endif %}
+            <caption>{{ photo['explanation'] }}</caption>
+            </p>
         {% endfor %}
         <p>{{ response }}</p>
     </body>

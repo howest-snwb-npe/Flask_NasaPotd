@@ -15,7 +15,8 @@ def search():
     response = requests.get(url)
     # print(response.json())
     for photo in response.json():
-        print(photo["url"])
+        if photo["media_type"] == "image":
+            print(photo["url"])
     
     return render_template("search.html",quantity=quantity,response=response.json())
 
